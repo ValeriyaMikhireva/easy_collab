@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест загрузки данных</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .company { border: 1px solid #ccc; margin: 10px 0; padding: 15px; border-radius: 5px; }
+        .company h3 { margin: 0 0 10px 0; color: #333; }
+        .company p { margin: 5px 0; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Тест загрузки данных компаний</h1>
+    <div id="status">Загружаем данные...</div>
+    <div id="companies"></div>
+
+    <script>
+        console.log('🚀 Начинаем тест загрузки данных');
+
+        // Функция парсинга CSV (копия из script.js)
+        function parseCSV(csv) {
+            console.log('Парсим CSV...');
+            const lines = csv.split('\n').filter(line => line.trim());
+            console.log('Количество строк:', lines.length);
+            
+            if (lines.length < 2) {
+                console.error('CSV файл слишком короткий');
+                return [];
+            }
+            
+            // Улучшенный парсинг CSV с учетом кавычек
+            function parseCSVLine(text) {
+                const result = [];
+                let current = '';
+                let inQuotes = false;
+                let i = 0;
+                
+                while (i < text.length) {
+                    const char = text[i];
+                    const nextChar = text[i + 1];
+                    
+                    if (char === '"') {
+                        if (inQuotes && nextChar === '"') {
+                            // Двойные кавычки внутри строки
+                            current += '"';
+                            i += 2;
+                            continue;
+                        } else {
+                            // Начало или конец кавычек
+                            inQuotes = !inQuotes;
+                        }
+                    } else if (char === ',' && !inQuotes) {
+                        // Разделитель вне кавычек
+                        result.push(current.trim());
+                        current = '';
+                        i++;
+                        continue;
+                    } else {
+                        current += char;
+                    }
+                    i++;
+                }
+                
+                result.push(current.trim());
+                return result;
+            }
+            
+            const headers = parseCSVLine(lines[0]);
+            console.log('Заголовки:', headers);
+            
+            const companies = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                if (lines[i].trim()) {
+                    const values = parseCSVLine(lines[i]);
+                    const company = {};
+                    headers.forEach((header, index) => {
+                        company[header] = values[index] || '';
+                    });
+                    companies.push(company);
+                }
+            }
+            
+            console.log('Компаний создано:', companies.length);
+            console.log('Первая компания:', companies[0]);
+            return companies;
+        }
+
+        // Загружаем данные
+        fetch('kollab_data.csv')
+            .then(response => {
+                console.log('Ответ от сервера:', response.status, response.statusText);
+                return response.text();
+            })
+            .then(data => {
+                console.log('Данные получены, длина:', data.length);
+                console.log('Первые 200 символов:', data.substring(0, 200));
+                
+                const companies = parseCSV(data);
+                console.log('Компаний распарсено:', companies.length);
+                
+                const statusDiv = document.getElementById('status');
+                const companiesDiv = document.getElementById('companies');
+                
+                if (companies.length > 0) {
+                    statusDiv.innerHTML = `<span class="success">✅ Успешно загружено компаний: ${companies.length}</span>`;
+                    
+                    companiesDiv.innerHTML = companies.map((company, index) => `
+                        <div class="company">
+                            <h3>${company['Название компании / Имя Эксперта'] || 'Не указано'}</h3>
+                            <p><strong>Направление:</strong> ${company['Направление бизнеса'] || 'Не указано'}</p>
+                            <p><strong>Описание:</strong> ${company['Коротко о компании (2–3 предложения)'] || 'Не указано'}</p>
+                            <p><strong>Рекламные возможности:</strong> ${company['Какие рекламные возможности у вас есть? (можно выбрать несколько) '] || 'Не указано'}</p>
+                            <p><strong>Бартер:</strong> ${company['Бартер'] || 'Не указано'}</p>
+                            <p><strong>Аудитория:</strong> ${company['Расскажите про свою аудиторию в соцсетях, если есть'] || 'Не указано'}</p>
+                            <p><strong>Клиенты в месяц:</strong> ${company['Поделитесь цифрами: сколько заказов/клиентов вы получаете ежемесячно?'] || 'Не указано'}</p>
+                            <p><strong>Контакт:</strong> ${company['Ваш Ник в Telegram для связи'] || 'Не указано'}</p>
+                            <p><strong>Лого:</strong> ${company['Лого компании'] || 'Не указано'}</p>
+                            <hr>
+                            <details>
+                                <summary>Все поля (для отладки)</summary>
+                                <pre>${JSON.stringify(company, null, 2)}</pre>
+                            </details>
+                        </div>
+                    `).join('');
+                } else {
+                    statusDiv.innerHTML = '<span class="error">❌ Компании не найдены</span>';
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка загрузки данных:', error);
+                document.getElementById('status').innerHTML = `<span class="error">❌ Ошибка загрузки: ${error.message}</span>`;
+            });
+    </script>
+</body>
+</html>

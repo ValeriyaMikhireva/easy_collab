@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Коллаб на изи - Кросс-маркетинг компаний</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=2.3">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <!-- Заголовок в стиле картинки -->
+            <div class="header-title">
+                <h1 class="brand-title">КОЛЛАБ НА ИЗИ</h1>
+            </div>
+            
+            <!-- Десктопная навигация -->
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Витрина компаний</a>
+                <a href="about.html" class="nav-link">О проекте</a>
+                <a href="team.html" class="nav-link">Команда</a>
+            </nav>
+            
+            <!-- Бургер меню для мобильных -->
+            <div class="burger-menu" id="burgerMenu">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Мобильная навигация -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-header">
+                <h3 class="mobile-nav-title">Меню</h3>
+                <button class="mobile-nav-close" id="mobileNavClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="mobile-nav-links">
+                <a href="index.html" class="mobile-nav-link active">Витрина компаний</a>
+                <a href="about.html" class="mobile-nav-link">О проекте</a>
+                <a href="team.html" class="mobile-nav-link">Команда</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="main">
+        <div class="container">
+            <!-- Фильтры наверху -->
+            <div class="filters-top">
+                <!-- Поиск на всю ширину -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Поиск по названию или описанию">
+                    </div>
+                </div>
+                
+                <!-- Фильтры под поиском -->
+                <div class="filters-row">
+                    <!-- Сфера деятельности -->
+                    <div class="filter-item dropdown-filter" >
+                        <button class="filter-dropdown-btn compact" onclick="toggleDropdown('businessArea')">
+                            <span class="filter-text" id="businessAreaText">Категория</span>
+                            <i class="fas fa-chevron-down filter-toggle-icon" id="businessAreaIcon" onclick="handleFilterIconClick(event, 'businessArea')"></i>
+                        </button>
+                        <div class="filter-dropdown-content" id="businessArea">
+                            <div class="filter-dropdown-header">
+                                <label class="select-all-label">
+                                    <input type="checkbox" id="selectAllBusiness" onchange="toggleSelectAll('businessArea')">
+                                    <span>Выбрать все</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item"><input type="checkbox" value="beauty" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Салоны красоты</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="fitness" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Фитнес и wellness</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="psychology" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Психология и коучинг</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="education" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Образование</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="health" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Здоровье</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="esoteric" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Эзотерика</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="it" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>IT и цифровые услуги</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="entertainment" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Развлекательные услуги</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="finance" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Финансы</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="household" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Бытовые услуги</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="retail" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Розничная торговля</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="real-estate" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Недвижимость</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="manufacturing" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Промышленное производство</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="agriculture" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Сельское хозяйство</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="livestock" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Животноводство</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="tourism" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Туристический бизнес</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="restaurant" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Ресторанный бизнес</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="auto" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Автобизнес</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="blogger" class="filter-checkbox" onchange="updateFilterCounter('businessArea')"><span>Блогер и артист</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Формат сотрудничества -->
+                    <div class="filter-item dropdown-filter" >
+                        <button class="filter-dropdown-btn compact" onclick="toggleDropdown('cooperation')">
+                            <span class="filter-text" id="cooperationText">Формат сотрудничества</span>
+                            <i class="fas fa-chevron-down filter-toggle-icon" id="cooperationIcon" onclick="handleFilterIconClick(event, 'cooperation')"></i>
+                        </button>
+                        <div class="filter-dropdown-content" id="cooperation">
+                            <div class="filter-dropdown-header">
+                                <label class="select-all-label">
+                                    <input type="checkbox" id="selectAllCooperation" onchange="toggleSelectAll('cooperation')">
+                                    <span>Выбрать все</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item"><input type="checkbox" value="barter" class="filter-checkbox" onchange="updateFilterCounter('cooperation')"><span>Бартер</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="paid" class="filter-checkbox" onchange="updateFilterCounter('cooperation')"><span>Платное сотрудничество</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="joint" class="filter-checkbox" onchange="updateFilterCounter('cooperation')"><span>Совместные акции</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="events" class="filter-checkbox" onchange="updateFilterCounter('cooperation')"><span>Совместные мероприятия</span></label>
+                                <label class="checkbox-item"><input type="checkbox" value="cross-promo" class="filter-checkbox" onchange="updateFilterCounter('cooperation')"><span>Кросс-промо</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Бартер -->
+                    <div class="filter-item" >
+                        <button class="filter-dropdown-btn compact barter-filter" onclick="toggleBarterFilter()">
+                            <span class="filter-text" id="barterText">Бартер</span>
+                            <i class="fas fa-plus filter-icon" id="barterIcon"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Кнопка "Сбросить все" -->
+                    <button class="reset-all-btn" id="resetAllBtn" onclick="resetAllFilters()" style="display: none;">
+                        <i class="fas fa-times"></i>
+                        Сбросить все
+                    </button>
+                </div>
+            </div>
+
+            <!-- Каталог компаний -->
+            <section class="catalog-main">
+                <div class="catalog-header">
+                    <h2 class="catalog-title">Каталог компаний</h2>
+                    <div class="results-count">
+                        <span id="resultsCount">0</span> компаний найдено
+                    </div>
+                </div>
+
+                <!-- Витрина компаний -->
+                <div class="companies-grid" id="companiesGrid">
+                    <!-- Компании будут загружены динамически -->
+                </div>
+            </section>
+
+            <!-- Модальное окно для деталей -->
+            <div class="modal" id="companyModal">
+                <!-- Содержимое модального окна будет загружено динамически -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">СВЯЖИТЕСЬ С НАМИ:</h3>
+                <div class="footer-contacts">
+                    <p class="footer-phone">+7 995 590 9447</p>
+                    <p class="footer-email">@energizer_kate</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="VK">
+                        <i class="fab fa-vk"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=2.7"></script>
+</body>
+</html>

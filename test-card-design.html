@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест нового дизайна карточек</title>
+    <style>
+        body { 
+            font-family: 'Montserrat', Arial, sans-serif; 
+            margin: 20px; 
+            background: #f8fafc;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .section {
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+        }
+        .before { background: #fef2f2; }
+        .after { background: #f0fdf4; }
+        .feature {
+            margin: 1rem 0;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 0.5rem;
+            border-left: 4px solid #3b82f6;
+        }
+        .avatar-demo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: transform 0.2s ease;
+        }
+        .avatar-demo:hover {
+            transform: scale(1.05);
+        }
+        .barter-demo {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            white-space: nowrap;
+            min-width: fit-content;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+        .barter-demo:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        .barter-yes {
+            background: #10b981;
+            color: #ffffff;
+        }
+        .barter-no {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+        .social-demo {
+            background: #f7fafc;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎨 Тест нового дизайна карточек компаний</h1>
+        <p>Проверка всех обновлений согласно требованиям</p>
+
+        <div class="comparison">
+            <div class="section before">
+                <h2>❌ До изменений</h2>
+                
+                <div class="feature">
+                    <h3>Аватарки</h3>
+                    <div style="width: 64px; height: 64px; border-radius: 0.5rem; background: #e2e8f0; margin: 1rem auto; display: flex; align-items: center; justify-content: center;">
+                        64×64 📷
+                    </div>
+                    <p>Квадратные, размер 64×64px</p>
+                </div>
+
+                <div class="feature">
+                    <h3>CRM информация</h3>
+                    <p>📊 CRM - Да (отображалась в карточке)</p>
+                </div>
+
+                <div class="feature">
+                    <h3>Бартер таблетка</h3>
+                    <div style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); color: #166534; padding: 0.5rem 1rem; border-radius: 0.5rem; display: inline-block; margin: 0.5rem 0;">
+                        Бартер да
+                    </div>
+                    <p>Градиентный стиль</p>
+                </div>
+
+                <div class="feature">
+                    <h3>Соцсети</h3>
+                    <p>👥 Подписчики в Телеграм - 200 чел</p>
+                    <p>Длинная подпись с описанием</p>
+                </div>
+            </div>
+
+            <div class="section after">
+                <h2>✅ После изменений</h2>
+                
+                <div class="feature">
+                    <h3>Аватарки</h3>
+                    <div class="avatar-demo">
+                        ⭕ 120×120
+                    </div>
+                    <p>Круглые, размер 120×120px как у команды</p>
+                </div>
+
+                <div class="feature">
+                    <h3>CRM информация</h3>
+                    <p style="color: #dc2626;">❌ Удалена (нет в новой базе данных)</p>
+                </div>
+
+                <div class="feature">
+                    <h3>Бартер таблетка</h3>
+                    <div class="barter-demo barter-yes">Бартер да</div>
+                    <div class="barter-demo barter-no">Бартер нет</div>
+                    <p>Стиль как у фильтров</p>
+                </div>
+
+                <div class="feature">
+                    <h3>Соцсети</h3>
+                    <div class="social-demo">
+                        <i style="color: #64748b;">👥</i>
+                        <span>Telegram - 200 подписчиков</span>
+                    </div>
+                    <p>Просто информация из столбца H без подписи</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #e1f5fe; padding: 1.5rem; border-radius: 0.75rem; margin: 2rem 0;">
+            <h2>📝 Проверочный список</h2>
+            <ul style="margin: 0; padding-left: 1.5rem;">
+                <li>✅ <strong>Аватарки:</strong> Круглые 120×120px (как у команды)</li>
+                <li>✅ <strong>CRM:</strong> Информация удалена</li>
+                <li>✅ <strong>Бартер:</strong> Таблетки в стиле фильтров</li>
+                <li>✅ <strong>Соцсети:</strong> Данные из столбца H без подписи</li>
+                <li>✅ <strong>Hover:</strong> Scale вместо pulse анимации</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="index.html" style="background: #4a5568; color: white; padding: 1rem 2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500;">
+                🚀 Проверить на главной странице
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест таблеток бартера</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Montserrat', Arial, sans-serif; 
+            margin: 20px; 
+            background: #f8fafc;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .section {
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+        }
+        .before { background: #fef2f2; }
+        .after { background: #f0fdf4; }
+        
+        /* Старые стили */
+        .old-barter-yes {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+            margin: 0.5rem 0;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .old-barter-no {
+            background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+            color: #991b1b;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+            margin: 0.5rem 0;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        /* Новые стили */
+        .new-barter-status {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            white-space: nowrap;
+            width: fit-content;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0;
+        }
+        .new-barter-status:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        .new-barter-yes {
+            background: #10b981;
+            color: #ffffff;
+        }
+        .new-barter-yes:hover {
+            background: #059669;
+        }
+        .new-barter-no {
+            background: #ef4444;
+            color: #ffffff;
+        }
+        .new-barter-no:hover {
+            background: #dc2626;
+        }
+        
+        .demo-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 200px;
+        }
+        .demo-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: auto;
+            align-items: flex-start;
+        }
+        .demo-button {
+            background: #4a5568;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            width: 100%;
+        }
+        .feature {
+            margin: 1rem 0;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 0.5rem;
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🏷️ Тест таблеток бартера</h1>
+        <p>Сравнение старого и нового дизайна</p>
+
+        <div class="comparison">
+            <div class="section before">
+                <h2>❌ До изменений</h2>
+                
+                <div class="feature">
+                    <h3>Дизайн</h3>
+                    <div class="old-barter-yes">Бартер да</div>
+                    <div class="old-barter-no">Бартер нет</div>
+                    <p>Градиентные стили, на всю ширину</p>
+                </div>
+
+                <div class="feature">
+                    <h3>Расположение</h3>
+                    <p>Между метриками и кнопкой</p>
+                </div>
+            </div>
+
+            <div class="section after">
+                <h2>✅ После изменений</h2>
+                
+                <div class="feature">
+                    <h3>Дизайн</h3>
+                    <div class="new-barter-status new-barter-yes"><i class="fas fa-check"></i> Да</div>
+                    <div class="new-barter-status new-barter-no"><i class="fas fa-times"></i> Нет</div>
+                    <p>Стиль фильтров, компактная ширина, иконки</p>
+                </div>
+
+                <div class="feature">
+                    <h3>Расположение</h3>
+                    <div class="demo-card">
+                        <div style="flex: 1;">
+                            <div style="background: #f7fafc; padding: 0.5rem; border-radius: 0.5rem; margin-bottom: 0.5rem;">Описание компании</div>
+                            <div style="background: #f7fafc; padding: 0.5rem; border-radius: 0.5rem;">Метрики</div>
+                        </div>
+                        <div class="demo-bottom">
+                            <div class="new-barter-status new-barter-yes"><i class="fas fa-check"></i> Да</div>
+                            <button class="demo-button">Подробнее</button>
+                        </div>
+                    </div>
+                    <p>Прижата к кнопке внизу карточки</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #e1f5fe; padding: 1.5rem; border-radius: 0.75rem; margin: 2rem 0;">
+            <h2>📝 Ключевые улучшения</h2>
+            <ul style="margin: 0; padding-left: 1.5rem;">
+                <li>✅ <strong>Ширина:</strong> Компактная по содержимому (width: fit-content)</li>
+                <li>✅ <strong>Иконки:</strong> ✓ для "Да", ✗ для "Нет"</li>
+                <li>✅ <strong>Цвета:</strong> Зеленый для "Да", красный для "Нет"</li>
+                <li>✅ <strong>Стиль:</strong> Как у фильтров (border-radius: 1.5rem)</li>
+                <li>✅ <strong>Позиция:</strong> Прижата к кнопке внизу карточки</li>
+                <li>✅ <strong>Hover:</strong> translateY(-1px) + увеличенная тень</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="index.html" style="background: #4a5568; color: white; padding: 1rem 2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500;">
+                🚀 Проверить на главной странице
+            </a>
+        </div>
+    </div>
+</body>
+</html>
